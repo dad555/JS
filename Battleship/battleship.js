@@ -29,3 +29,4 @@ while (isSunk == false) {
 let stats = "You took " + guesses + " guesses to sink the battleship, " +
     "which means your shooting accuracy was " + (3 / guesses);
 alert(stats);
+alert("1");
