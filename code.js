@@ -1,30 +1,29 @@
-function whatShallIWear(temp) {
-    if (temp < 60) {
-        console.log("Wear a jacket");
-    } else if (temp < 70) {
-        console.log("Wear a sweater");
+function getSecret(file, secretPassword) {
+    file.opened = file.opened + 1;
+    if (secretPassword == file.password) {
+        return file.contents;
     } else {
-        console.log("Wear t-shirt");
+        return "Invalid password! No secret for you."
     }
 }
 
-whatShallIWear(50);
-whatShallIWear(80);
-whatShallIWear(60);
-
-function doIt(param) {
-    param = 2;
-    console.log(param);
+function setSecret(file, secretPassword, secret) {
+    if (secretPassword == file.password) {
+        file.opened = 0;
+        file.contents = secret;
+    }
 }
 
-var test = 1;
-doIt(test);
-console.log(test);
+let superSecretFile = {
+    level: "classified",
+    opened: 0,
+    password: 2,
+    contents: "Dr. Evel's next meeting is in Detroit."
+};
 
-function test1(x, y) {
-    return x + y;
-}
+let secret = getSecret(superSecretFile, 2);
+console.log(secret);
 
-console.log(test1(1,2));
-
-
+setSecret(superSecretFile, 2, "Dr. Evel's next meeting is in Philadelphia.");
+secret = getSecret(superSecretFile, 2);
+console.log(secret);
